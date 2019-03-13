@@ -56,12 +56,19 @@
 	</head>
 	<body>
 		<h1 align="center">ROC Curve Line Chart</h1>
-		<p>Please input C value and choose the preprocess method.<br /> Click run button to plot the ROC curve.</p>
-		<br />Choose c value: 
+		<p>Please input C value and choose the preprocess method.<br /> 
+			Click run button to plot the ROC curve.</p>
+		<br />
+		
+		Choose c value: 
 		<input type="text" id="c" value="1.0" />
+
+
 		<br />Choose preprocess method: 
 		Min_max_scaler <input name="input" type="radio" value="Min_max_scaler" checked="checked" />
 		Standardization <input name="input" type="radio" value="Standardization"/>
+
+		
 		<button class="button button1" onclick="run()">Run</button>
 
 
