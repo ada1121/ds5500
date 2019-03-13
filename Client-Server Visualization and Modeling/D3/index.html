@@ -1,0 +1,71 @@
+ <html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ROC Curve</title>
+		<style>
+			body{text-align:center;
+				font-size: 14px; 
+				font-family: 'Open Sans';
+			}
+				
+			path { 
+				 stroke-width: 3;
+				  fill: none;
+				   opacity: .7;
+				}
+
+			.button {
+				background-color: #4CAF50;
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 2px;
+				cursor: pointer;
+				}
+		    .button1 {
+				background-color: white;
+				color: black;
+				border: 2px solid #e7e7e7;
+				}
+			.button1 {font-size: 12px;}
+			.button1:hover {background-color: #e7e7e7;}
+		.button1 {padding: 8px 20px;}
+			
+		   .axis path,
+		   .axis line {
+				fill: none;
+			    stroke: grey;
+		  	    stroke-width: 2;
+			    shape-rendering: crispEdges;
+				 opacity: 1;
+			}
+
+			.d3-tip {
+				font-family: Verdana;
+				background: rgba(0, 0, 0, 0.8);
+				padding: 8px;
+				color: #fff; 
+				z-index: 5070;
+			}
+		</style>
+
+	</head>
+	<body>
+		<h1 align="center">ROC Curve Line Chart</h1>
+		<p>Please input C value and choose the preprocess method.<br /> Click run button to plot the ROC curve.</p>
+		<br />Choose c value: 
+		<input type="text" id="c" value="1.0" />
+		<br />Choose preprocess method: 
+		Min_max_scaler <input name="input" type="radio" value="Min_max_scaler" checked="checked" />
+		Standardization <input name="input" type="radio" value="Standardization"/>
+		<button class="button button1" onclick="run()">Run</button>
+
+
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<br /><script src="scripts/main.js"></script>
+	</body>
+</html>
