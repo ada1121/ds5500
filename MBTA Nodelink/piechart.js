@@ -12,8 +12,6 @@ var path = d3.arc()
     .outerRadius(radius - 10)
     .innerRadius(0);
 
-console.log("running pie");
-
 function visUpdated(groupsData) {
     var arc = pieG.selectAll(".arc")
         .data(pie(groupsData), function (d) {
@@ -34,18 +32,14 @@ function visUpdated(groupsData) {
         .text(function (d) {
             return d.data.name;
         });
-
-    arcEnterG.on("mouseover", function(d) {
-      dispatch.call("stationHovered", null, d.data);
-    }).on("mouseout", function(d) {
-      dispatch.call("stationHovered", null, null);
-    });
+        
+    arcEnterG.on('mouseover', function(d) { dispatch.call("stationHovered", null, d.data); })
+        .on('mouseout', function(d) { dispatch.call("stationHovered", null, null); });
 
     arc.select("path")
         .attr("d", path);
 
     arc.exit().remove();
-
 }
 
 var allNodes;
@@ -54,27 +48,22 @@ dispatch.on("dataLoaded.pie", function(data) {
   visUpdated(data.nodes);
 });
 
-
 dispatch.on("stationHovered.pie", function(station) {
-  console.log('pie hover');
-	var arcs = pieG.selectAll(".arc");
-  if (station) {
-      arcs.select("path").attr("fill-opacity", 0.7);
-      arcs
-        .filter(function(d) { return d.data.id === station.id;})
-        .select("path").attr("fill-opacity", 1);
-	} else {
-		arcs.select("path").attr("fill-opacity", 1);
-	}
-  
+  var arcs = pieG.selectAll(".arc");
+  if(station) {
+    arcs.select('path').attr('fill-opacity', 0.7);
+    arcs.filter(function(d) {
+      return d.data.id === station.id;
+    }).select('path').attr('fill-opacity', 1);
+  } else {
+    arcs.select('path').attr('fill-opacity', 1);
+  }
 });
 
-dispatch.on("nodesUpdated.pie", function(selected) {
-
-  if (selected && selected.length != 0) {
-    visUpdated(selected);
+dispatch.on("nodesUpdated.pie", function(stations) {
+  if(stations) {
+    visUpdated(stations);
   } else {
     visUpdated(allNodes);
   }
-
-});
+})

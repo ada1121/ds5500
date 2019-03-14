@@ -1,3 +1,5 @@
+var dispatch = d3.dispatch("dataLoaded","stationHovered");
+
 var dispatch = d3.dispatch("dataLoaded", "stationHovered", "nodesUpdated");
 
 d3.json("stations.json", function(error, stations)
@@ -5,8 +7,6 @@ d3.json("stations.json", function(error, stations)
     var data = {};
     data.nodes = stations.nodes;
     data.links = stations.links;
-
-    console.log("loading data");
 
     for(var i = 0; i < data.nodes.length; i++)
     {
